@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TasksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/tasks', [TasksController::class, 'index'])->name('task.index');
+Route::post('/tasks/{id}', [TasksController::class, 'create'])->name('task.create');
+Route::delete('/tasks/{id}', [TasksController::class, 'delete'])->name('task.delete');
